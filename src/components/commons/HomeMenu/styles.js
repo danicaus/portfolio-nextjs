@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const MenuOption = styled.a`
-  font-size: 6rem;
+  font-size: clamp(4rem, 8vw, 6rem);
   font-weight: 900;
-  color: #c22085;
+  color: var(--pink);
   font-family: 'Poppins', sans-serif;
   transition: ease-in-out .3s;
 
@@ -16,17 +16,17 @@ const MenuOption = styled.a`
   }
 
   &:hover {
-    transform: translateX(-2rem);
+    transform: translateX(2rem);
   }
 `;
 
 const HomeMenuWrapper = styled.div`
   position: absolute;
   top: 20%;
-  right: 5%;
+  left: 5%;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 1rem;
 `;
 

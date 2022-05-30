@@ -1,10 +1,20 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+  :root {
+    --pink: #c22085;
+    --green: #2c9384;
+    --black: #0c0c0c;
+  }
+  
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+
+  html {
+    font-size: 62,5%;
   }
 
   a {
@@ -22,6 +32,7 @@ const GlobalStyle = createGlobalStyle`
     border: none;
     background-color: inherit;
   }
+
 `;
 
 export default GlobalStyle;
