@@ -4,7 +4,11 @@ const GlobalStyle = createGlobalStyle`
   :root {
     --pink: #c22085;
     --green: #2c9384;
+    --white: #FFFFFF;
+    --gray-100: #dedede;
+    --gray-300: #a3a3a3;
     --black: #0c0c0c;
+    --black-700: #3c3c3c;
   }
   
   * {
@@ -15,6 +19,9 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     font-size: 62,5%;
+    background-color: var(--black);
+    color: var(--gray-100);
+    font-family: 'Roboto', sans-serif;
   }
 
   a {

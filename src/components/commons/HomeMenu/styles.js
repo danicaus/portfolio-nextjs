@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 const MenuOption = styled.a`
   font-size: clamp(4rem, 8vw, 6rem);
-  font-weight: 900;
+  font-weight: 700;
   color: var(--pink);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
   transition: ease-in-out .3s;
 
   &::after {
