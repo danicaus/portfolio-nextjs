@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import SectionTitle from '../../commons/SectionTitle';
+import Section from '../../commons/Section';
+import Text from '../../Text';
 import Profile from './style';
 
 export default function AboutScreen() {
@@ -34,24 +35,37 @@ export default function AboutScreen() {
   // faça um gradiente antes porque tá bem esquisito a transição entre seções!
 
   return (
-    <>
-      <SectionTitle sectionName="sobre" />
+    <Section sectionName="sobre">
       <Profile.Wrapper>
         <Profile.Avatar
           src={profileInfo.avatar}
           alt={`Foto de perfil do github ${profileInfo.name}`}
         />
         <Profile.Bio>
-          <h3>{profileInfo.name}</h3>
-          <h4>{profileInfo.bio}</h4>
-        </Profile.Bio>
-        <Profile.Text>
+          <Text
+            as="h2"
+            variant="title"
+            color="white"
+          >
+            {profileInfo.name}
+          </Text>
+          <Text
+            as="h3"
+            variant="subtitle"
+            color="gray300"
+          >
+            {profileInfo.bio}
+          </Text>
           {aboutContent?.map((text) => (
-            <p>{text}</p>
+            <Text
+              variant="paragraph"
+              color="gray300"
+            >
+              {text}
+            </Text>
           ))}
-        </Profile.Text>
+        </Profile.Bio>
       </Profile.Wrapper>
-      <SectionTitle sectionName="sobre" isCloseTag="true" />
-    </>
+    </Section>
   );
 }

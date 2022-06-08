@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const MenuOption = styled.a`
   font-size: clamp(4rem, 8vw, 6rem);
   font-weight: 700;
-  color: var(--pink);
+  color: ${({ theme }) => theme.colors.pink};
   font-family: 'Roboto', sans-serif;
   transition: ease-in-out .3s;
 

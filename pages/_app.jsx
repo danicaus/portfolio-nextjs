@@ -3,20 +3,13 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../src/components/themes/GlobalStyle';
-
-const theme = {
-  colors: {
-    primary: '#0070f3',
-  },
-};
+import theme from '../src/components/themes';
 
 export default function App({ Component, pageProps }) {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </>
+      <Component {...pageProps} />
+    </ThemeProvider>
   );
 }
