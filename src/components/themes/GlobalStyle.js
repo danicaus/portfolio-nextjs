@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-//TODO instalar o styled-normalize
+// TODO instalar o styled-normalize
 
 const GlobalStyle = createGlobalStyle`
   * {
