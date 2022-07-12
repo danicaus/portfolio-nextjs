@@ -3,7 +3,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import get from 'lodash/get';
 
-import breakpointsMedia from '../themes/utils/breakpointsMedia';
+import breakpointsMedia from '../../themes/utils/breakpointsMedia';
 
 const textStyleVariants = {
   title: css`
