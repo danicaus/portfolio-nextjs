@@ -4,4 +4,11 @@ const SectionWrapper = styled.section`
   padding: 3rem;
 `;
 
-export default SectionWrapper;
+const SectionContent = styled.div`
+  padding: 3rem 10rem;
+`;
+
+export {
+  SectionWrapper,
+  SectionContent,
+};

@@ -4,8 +4,6 @@ import breakpointsMedia from '../../themes/utils/breakpointsMedia';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 3rem;
-  margin: 0 5rem;
 `;
 
 const Avatar = styled.img`
