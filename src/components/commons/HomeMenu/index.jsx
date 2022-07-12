@@ -7,17 +7,17 @@ export default function HomeMenu() {
     {
       title: 'Olá.',
       hoverTitle: 'Sobre mim',
-      link: '/about',
+      link: '#about',
     },
     {
       title: 'Eu sou a',
-      hoverTitle: 'Portfólio',
-      link: '/portfolio',
+      hoverTitle: 'Projetos',
+      link: '#portfolio',
     },
     {
       title: 'Dani',
-      hoverTitle: 'Cursos',
-      link: '/courses',
+      hoverTitle: 'Atividades',
+      link: '#activities',
     },
   ];
 

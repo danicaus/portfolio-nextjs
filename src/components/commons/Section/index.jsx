@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Text from '../../Text';
+import Text from '../Text';
 
-import SectionWrapper from './style';
+import { SectionWrapper, SectionContent } from './style';
 
-export default function Section({ sectionName, children }) {
+export default function Section({ sectionName, children, id }) {
   const openTag = `< ${sectionName} >`;
   const closeTag = `</ ${sectionName} >`;
 
   return (
-    <SectionWrapper>
+    <SectionWrapper id={id}>
       <Text
         as="h2"
         variant="subtitle"
@@ -18,7 +18,9 @@ export default function Section({ sectionName, children }) {
       >
         {openTag}
       </Text>
-      {children}
+      <SectionContent>
+        {children}
+      </SectionContent>
       <Text
         as="p"
         variant="subtitle"
@@ -34,4 +36,5 @@ export default function Section({ sectionName, children }) {
 Section.propTypes = {
   sectionName: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
+  id: PropTypes.string.isRequired,
 };

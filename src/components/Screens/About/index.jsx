@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Section from '../../commons/Section';
-import Text from '../../Text';
+import Text from '../../commons/Text';
 import Profile from './style';
 
 export default function AboutScreen() {
@@ -35,7 +35,7 @@ export default function AboutScreen() {
   // faça um gradiente antes porque tá bem esquisito a transição entre seções!
 
   return (
-    <Section sectionName="sobre">
+    <Section sectionName="sobre mim" id="about">
       <Profile.Wrapper>
         <Profile.Avatar
           src={profileInfo.avatar}
