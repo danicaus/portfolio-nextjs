@@ -6,13 +6,13 @@ import HomeScreen from '../src/components/Screens/Home';
 import ProjectScreen from '../src/components/Screens/ProjectsScreen';
 
 import githubClient from '../src/infra/services/githubClient';
-import GET_PINNED_REPOS from '../src/infra/graphql/getPinnedRepos';
+import GET_GITHUB_BIO_AND_PINNED_REPOS from '../src/infra/graphql/getGithubBioAndPinnedRepos';
 
-export default function Home({ pinnedRepos }) {
+export default function Home({ pinnedRepos, aboutText }) {
   return (
     <>
       <HomeScreen />
-      <AboutScreen />
+      <AboutScreen content={aboutText} />
       <ProjectScreen pinnedRepos={pinnedRepos} />
     </>
   );
@@ -20,12 +20,25 @@ export default function Home({ pinnedRepos }) {
 
 export async function getServerSideProps() {
   const { data } = await githubClient.query({
-    query: GET_PINNED_REPOS,
+    query: GET_GITHUB_BIO_AND_PINNED_REPOS,
   });
+
+  const { text } = data.user.repository.object;
+  const { bio, avatarUrl, name } = data.user;
+
+  const pinnedRepos = data.user.pinnedItems.nodes;
+
+  const aboutText = {
+    bio,
+    avatarUrl,
+    name,
+    text,
+  };
 
   return {
     props: {
-      pinnedRepos: data.user.pinnedItems.nodes,
+      pinnedRepos,
+      aboutText,
     },
   };
 }
@@ -38,4 +51,10 @@ Home.propTypes = {
     url: PropTypes.string,
     homepageUrl: PropTypes.string,
   })).isRequired,
+  aboutText: PropTypes.shape({
+    bio: PropTypes.string,
+    avatarUrl: PropTypes.string,
+    name: PropTypes.string,
+    text: PropTypes.string,
+  }).isRequired,
 };
