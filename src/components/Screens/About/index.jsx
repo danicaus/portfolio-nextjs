@@ -1,45 +1,30 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Section from '../../commons/Section';
 import Text from '../../commons/Text';
 import Profile from './style';
 
-export default function AboutScreen() {
-  const [aboutContent, setAboutContent] = useState(null);
-  const [profileInfo, setProfileInfo] = useState({
-    name: '',
-    bio: '',
-    avatar: '',
-  });
+export default function AboutScreen({ content }) {
+  const [aboutContent, setAboutContent] = useState([]);
 
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_README_FILE)
-      .then((res) => res.text())
-      .then((resText) => {
-        const $aboutElement = document.createElement('div');
-        $aboutElement.innerHTML = resText;
-        const paragraphsArray = Array.from(
-          $aboutElement.querySelectorAll('#portuguese_profile > p'),
-        ).map((text) => text.innerText);
-        return paragraphsArray;
-      })
-      .then((content) => setAboutContent(content));
+    const $aboutElement = document.createElement('div');
+    $aboutElement.innerHTML = content?.text;
+    const paragraphsArray = Array.from(
+      $aboutElement.querySelectorAll('#portuguese_profile > p'),
+    ).map((text) => text.innerText);
 
-    fetch(process.env.NEXT_PUBLIC_PROFILE)
-      .then((res) => res.json())
-      .then((resJson) => setProfileInfo({
-        name: resJson.name,
-        bio: resJson.bio,
-        avatar: resJson.avatar_url,
-      }));
+    setAboutContent(paragraphsArray);
   }, []);
+
   // faça um gradiente antes porque tá bem esquisito a transição entre seções!
 
   return (
     <Section sectionName="sobre mim" id="about">
       <Profile.Wrapper>
         <Profile.Avatar
-          src={profileInfo.avatar}
-          alt={`Foto de perfil do github ${profileInfo.name}`}
+          src={content?.avatarUrl}
+          alt={`Foto de perfil do github ${content?.name}`}
         />
         <Profile.Bio>
           <Text
@@ -47,14 +32,14 @@ export default function AboutScreen() {
             variant="title"
             color="white"
           >
-            {profileInfo.name}
+            {content?.name}
           </Text>
           <Text
             as="h3"
             variant="subtitle"
             color="gray300"
           >
-            {profileInfo.bio}
+            {content?.bio}
           </Text>
           {aboutContent?.map((text) => (
             <Text
@@ -69,3 +54,12 @@ export default function AboutScreen() {
     </Section>
   );
 }
+
+AboutScreen.propTypes = {
+  content: PropTypes.shape({
+    bio: PropTypes.string,
+    avatarUrl: PropTypes.string,
+    name: PropTypes.string,
+    text: PropTypes.string,
+  }).isRequired,
+};

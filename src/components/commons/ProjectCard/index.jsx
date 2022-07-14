@@ -13,13 +13,10 @@ import {
 } from './style';
 import Text from '../Text';
 
-// buscar o logo da repo. Se tiver, exibir. Se não, exibir o nome mesmo
-// fetch(`https://raw.githubusercontent.com/danicaus/${repo.name}/main/src/assets/images/logo.svg`)
 export default function ProjectCard({ repo }) {
   const [hasLogo, setHasLogo] = useState(false);
   const [repoName, setRepoName] = useState(repo.name);
   const nextLoader = ({ src, width, quality }) => `https://raw.githubusercontent.com/danicaus/${src}?w=${width}&q=${quality || 75}`;
-
 
   function capitalizeFirstName(name) {
     return name.replaceAll('-', ' ').split(' ').map((word) => word[0].toUpperCase() + word.slice(1)).join(' ');
@@ -29,8 +26,10 @@ export default function ProjectCard({ repo }) {
     const $readmeElement = document.createElement('div');
     $readmeElement.innerHTML = repo?.object?.text;
     const $titleElement = $readmeElement.querySelector('h1');
+
+    // Dentro do h1, temos uma img do md: ![](). Abaixo estou pegando só a referência do logo.
     const logoRef = $titleElement?.innerText?.split('(')[1].replace(')', '');
-    console.log("$titleElement", $titleElement);
+
     if (logoRef) {
       setHasLogo(true);
       setRepoName(logoRef);
