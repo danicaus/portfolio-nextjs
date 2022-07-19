@@ -8,7 +8,7 @@ const Project = styled.div`
   gap: 2rem;
   border: 1px solid;
   border-color: ${({ theme }) => theme.colors.gray700};
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   padding: 2rem;
 `;
 

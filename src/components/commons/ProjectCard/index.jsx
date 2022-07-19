@@ -28,13 +28,16 @@ export default function ProjectCard({ repo }) {
     const $titleElement = $readmeElement.querySelector('h1');
 
     // Dentro do h1, temos uma img do md: ![](). Abaixo estou pegando só a referência do logo.
-    const logoRef = $titleElement?.innerText?.split('(')[1].replace(')', '');
+    const titleContent = $titleElement?.innerText;
+    const hasImage = titleContent?.trim().startsWith('!');
+    const logoRef = hasImage ? titleContent?.split('(')[1].replace(')', '') : '';
 
-    if (logoRef) {
+    if (hasImage) {
       setHasLogo(true);
       setRepoName(logoRef);
     } else {
-      setRepoName(capitalizeFirstName(repo.name));
+      const title = $titleElement ? titleContent : capitalizeFirstName(repo.name);
+      setRepoName(title);
     }
   }, []);
 
