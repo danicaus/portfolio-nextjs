@@ -3,28 +3,39 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 
 import Text from '../Text';
+import * as Activity from './style';
 
 export default function ActivityCard({ activity }) {
   return (
-    <div>
-      <Text variant="subtitle">{activity.title}</Text>
-      <Text>{activity.description}</Text>
-      {Boolean(activity.link) && (
-        activity.link.map((link) => (
-          <Link href={link.url}>
-            {link.label}
-          </Link>
-        ))
-      )}
-      {Boolean(activity.tags) && (
-        activity.tags.map((tag) => (
-          <Text variant="smallestException">
+    <Activity.Wrapper>
+      <Activity.Header>
+        {activity.tags.map((tag) => (
+          <Text
+            variant="smallestException"
+            color="yellow"
+          >
             #
             {tag}
           </Text>
-        ))
-      )}
-    </div>
+        ))}
+      </Activity.Header>
+      <Text
+        variant="subtitle"
+        font="fira"
+      >
+        {activity.title}
+      </Text>
+      <Text>{activity.description}</Text>
+      <Activity.Links>
+        {Boolean(activity.link) && (
+          activity.link.map((link) => (
+            <Link href={link.url}>
+              {link.label}
+            </Link>
+          ))
+        )}
+      </Activity.Links>
+    </Activity.Wrapper>
   );
 }
 

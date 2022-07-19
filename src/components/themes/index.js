@@ -6,8 +6,11 @@ const breakpoints = {
 };
 
 const colors = {
-  pink: '#c22085',
-  green: '#2c9384',
+  pink: '#C23993',
+  pink600: '#C22085',
+  green: '#30E6B7',
+  green700: '#28997C',
+  yellow: '#E6BB3E',
   white: '#FFFFFF',
   gray100: '#dedede',
   gray300: '#a3a3a3',
@@ -17,6 +20,7 @@ const colors = {
 
 const fonts = {
   fira: '\'Fira Code\', sans-serif',
+  montserrat: '\'Montserrat\', sans-serif',
 };
 
 export default {
