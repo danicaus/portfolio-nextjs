@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 const MenuOption = styled.a`
-  font-size: clamp(4rem, 8vw, 6rem);
+  font-size: clamp(5rem,10vw,10rem);
   font-weight: 700;
   color: ${({ theme }) => theme.colors.pink};
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   transition: ease-in-out .3s;
 
   &::after {
