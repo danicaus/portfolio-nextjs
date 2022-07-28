@@ -8,6 +8,7 @@ import ProjectScreen from '../src/components/Screens/ProjectsScreen';
 import githubClient from '../src/infra/services/githubClient';
 import GET_GITHUB_BIO_AND_PINNED_REPOS from '../src/infra/graphql/getGithubBioAndPinnedRepos';
 import Activities from '../src/components/Screens/Activities';
+import Footer from '../src/components/commons/Footer';
 
 export default function Home({ pinnedRepos, aboutText }) {
   return (
@@ -16,6 +17,7 @@ export default function Home({ pinnedRepos, aboutText }) {
       <AboutScreen content={aboutText} />
       <ProjectScreen pinnedRepos={pinnedRepos} />
       <Activities />
+      <Footer social={aboutText} />
     </>
   );
 }
