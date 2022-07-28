@@ -1,57 +1,37 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import styled, { css } from 'styled-components';
-import get from 'lodash/get';
+import PropTypes from 'prop-types';
 
-import breakpointsMedia from '../../themes/utils/breakpointsMedia';
-
-const textStyleVariants = {
-  title: css`
-    ${breakpointsMedia({
-    xs: css`
-        font-size: ${({ theme }) => theme.typographyVariants.titleXS.fontSize};
-        font-weight: ${({ theme }) => theme.typographyVariants.titleXS.fontWeight};
-        line-height: ${({ theme }) => theme.typographyVariants.titleXS.lineHeight};
-      `,
-    md: css`
-        font-size: ${({ theme }) => theme.typographyVariants.title.fontSize};
-        font-weight: ${({ theme }) => theme.typographyVariants.title.fontWeight};
-        line-height: ${({ theme }) => theme.typographyVariants.title.lineHeight};
-      `,
-  })}  
-  `,
-  subtitle: css`
-    font-size: ${({ theme }) => theme.typographyVariants.subtitle.fontSize};
-    font-weight: ${({ theme }) => theme.typographyVariants.subtitle.fontWeight};
-    line-height: ${({ theme }) => theme.typographyVariants.subtitle.lineHeight};
-  `,
-  paragraph: css`
-    font-size: ${({ theme }) => theme.typographyVariants.paragraph.fontSize};
-    font-weight: ${({ theme }) => theme.typographyVariants.paragraph.fontWeight};
-    line-height: ${({ theme }) => theme.typographyVariants.paragraph.lineHeight};
-  `,
-  smallestException: css`
-    font-size: ${({ theme }) => theme.typographyVariants.smallestException.fontSize};
-    font-weight: ${({ theme }) => theme.typographyVariants.smallestException.fontWeight};
-    line-height: ${({ theme }) => theme.typographyVariants.smallestException.lineHeight};
-  `,
-};
-
-const TextBase = styled.p`
-  ${({ variant }) => textStyleVariants[variant]}
-  color: ${({ theme, color }) => get(theme, `colors.${color}`)};
-  font-family: ${({ theme, font }) => get(theme, `fonts.${font}`)};
-`;
+import TextBase from './style';
 
 export default function Text({
   children,
   tag,
+  href,
   variant,
   color,
   font,
+  className,
 }) {
+  if (href) {
+    return (
+      <TextBase
+        className={className}
+        as="a"
+        variant={variant}
+        color={color}
+        font={font}
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+      >
+        {children}
+      </TextBase>
+    );
+  }
+
   return (
     <TextBase
+      className={className}
       as={tag}
       variant={variant}
       color={color}
@@ -64,15 +44,19 @@ export default function Text({
 
 Text.propTypes = {
   children: PropTypes.node.isRequired,
+  className: PropTypes.string,
   tag: PropTypes.oneOf(['h2', 'h3', 'h4', 'h5', 'p', 'span']),
+  href: PropTypes.string,
   variant: PropTypes.string,
   font: PropTypes.string,
   color: PropTypes.string,
 };
 
 Text.defaultProps = {
+  className: '',
   variant: 'paragraph',
   tag: 'p',
+  href: '',
   font: '\'Roboto\', sans-serif',
   color: 'gray100',
 };
