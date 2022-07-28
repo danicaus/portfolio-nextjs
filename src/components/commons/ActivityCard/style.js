@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import breakpointsMedia from '../../themes/utils/breakpointsMedia';
+import Text from '../Text';
 
 export const Wrapper = styled.li`
   border: 1px solid;
@@ -21,14 +23,23 @@ export const Header = styled.div`
 export const Links = styled.div`
   display: flex;
   gap: 1.2rem;
+  margin-top: 1rem;
+  ${breakpointsMedia({
+    xs: css`
+      flex-direction: column;
+    `,
+    md: css`
+      flex-direction: row;
+    `,
+  })}
+`;
 
-  a {
-    text-transform: uppercase;
-    transition: 0.2s;
-    
-    &:hover {
-      text-decoration: underline;
-      color: ${({ theme }) => theme.colors.yellow}
-    }  
+export const Link = styled(Text)`
+  text-transform: uppercase;
+  transition: 0.2s;
+  
+  &:hover {
+    text-decoration: underline;
+    color: ${({ theme }) => theme.colors.yellow}
   }
 `;

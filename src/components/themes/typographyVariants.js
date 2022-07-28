@@ -1,26 +1,26 @@
 const typographyVariants = {
   title: {
-    fontSize: '3.2rem',
+    fontSize: '5.2rem',
     fontWeight: '700',
     lineHeight: 1.25,
   },
   titleXS: {
-    fontSize: '2.4rem',
+    fontSize: '3.8rem',
     fontWeight: '500',
     lineHeight: 1.25,
   },
   subtitle: {
-    fontSize: '1.6rem',
+    fontSize: '2.4rem',
     fontWeight: '500',
     lineHeight: 1.25,
   },
   paragraph: {
-    fontSize: '1.2rem',
+    fontSize: '2rem',
     fontWeight: '400',
     lineHeight: 1.25,
   },
   smallestException: {
-    fontSize: '.8rem',
+    fontSize: '1.6rem',
     fontWeight: '400',
     lineHeight: 1,
   },
