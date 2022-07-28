@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-size: 62,5%;
+    font-size: 62.5%;
     background-color: ${({ theme }) => theme.colors.black};
     color: ${({ theme }) => theme.colors.gray100};
     font-family: ${({ theme }) => theme.fontFamily};

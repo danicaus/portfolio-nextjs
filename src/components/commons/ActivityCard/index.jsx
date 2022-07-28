@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import PropTypes from 'prop-types';
 
 import Text from '../Text';
@@ -29,9 +28,12 @@ export default function ActivityCard({ activity }) {
       <Activity.Links>
         {Boolean(activity.link) && (
           activity.link.map((link) => (
-            <Link href={link.url}>
+            <Activity.Link
+              href={link.url}
+              variant="smallestException"
+            >
               {link.label}
-            </Link>
+            </Activity.Link>
           ))
         )}
       </Activity.Links>

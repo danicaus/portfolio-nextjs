@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import breakpointsMedia from '../../themes/utils/breakpointsMedia';
 
 const MenuOption = styled.a`
-  font-size: clamp(5rem,10vw,10rem);
+  font-size: clamp(6rem,10vw,12rem);
   font-weight: 700;
   color: ${({ theme }) => theme.colors.pink};
   font-family: 'Montserrat', sans-serif;
@@ -22,12 +23,19 @@ const MenuOption = styled.a`
 
 const HomeMenuWrapper = styled.div`
   position: absolute;
-  top: 20%;
   left: 5%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
+  ${breakpointsMedia({
+    xs: css`
+      top: 10%;
+    `,
+    md: css`
+      top: 20%;
+    `,
+  })}
 `;
 
 export {
