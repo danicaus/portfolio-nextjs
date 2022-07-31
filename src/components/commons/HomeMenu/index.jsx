@@ -1,39 +1,40 @@
-import Link from 'next/link';
 import React from 'react';
-import { MenuOption, HomeMenuWrapper } from './styles';
+import { MenuOption, MenuWrapper } from './styles';
 
 export default function HomeMenu() {
   const menuContent = [
     {
-      title: 'Olá.',
+      title: 'Oi! 👋🏽',
       hoverTitle: 'Sobre mim',
       link: '#about',
+      color: 'green',
     },
     {
       title: 'Eu sou a',
       hoverTitle: 'Projetos',
       link: '#portfolio',
+      color: 'pink',
     },
     {
-      title: 'Dani',
+      title: 'Dani Caus',
       hoverTitle: 'Atividades',
       link: '#activities',
+      color: 'yellow',
     },
   ];
 
   return (
-    <HomeMenuWrapper>
-      {
-        menuContent.map((content) => (
-          <Link passHref href={content.link} key={content.link}>
-            <MenuOption
-              ariaLabel={content.title}
-              contentExhibited={content.title}
-              contentHover={content.hoverTitle}
-            />
-          </Link>
-        ))
-      }
-    </HomeMenuWrapper>
+    <MenuWrapper>
+      {menuContent.map((menu) => (
+        <MenuOption
+          href={menu.link}
+          blank="_self"
+          color={menu.color}
+          ariaLabel={menu.title}
+          contentExhibited={menu.title}
+          contentHover={menu.hoverTitle}
+        />
+      ))}
+    </MenuWrapper>
   );
 }

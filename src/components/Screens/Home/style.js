@@ -2,12 +2,14 @@ import styled from 'styled-components';
 
 const Background = styled.div`
   height: 100vh;
-  width: 100vw;
-  background-image:
-    linear-gradient(#000, #000), 
-    url("./assets/images/backgroundImage.jpg");
-  background-size: cover;
-  background-blend-mode: saturation;
+  width: 100%;
+  background-image: ${({ theme }) => (`
+    linear-gradient(to top, ${theme.colors.black}, #00000000 20%),
+    url("./assets/images/danicaus_b&w.png")
+  `)};
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom right -15%;
 `;
 
 export default Background;

@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 import breakpointsMedia from '../../themes/utils/breakpointsMedia';
+import Text from '../Text';
 
-const MenuOption = styled.a`
-  font-size: clamp(6rem,10vw,12rem);
+const MenuOption = styled(Text)`
+  font-size: clamp(6rem,10vw,16rem);
   font-weight: 700;
-  color: ${({ theme }) => theme.colors.pink};
   font-family: 'Montserrat', sans-serif;
   transition: ease-in-out .3s;
 
@@ -17,28 +17,29 @@ const MenuOption = styled.a`
   }
 
   &:hover {
-    transform: translateX(2rem);
+    transform: translateX(5rem);
   }
 `;
 
-const HomeMenuWrapper = styled.div`
+const MenuWrapper = styled.h1`
   position: absolute;
-  left: 5%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
   ${breakpointsMedia({
     xs: css`
-      top: 10%;
+      left: 5%;
+      top: 8%;
     `,
     md: css`
-      top: 20%;
+      left: 12%;
+      top: 18%;
     `,
   })}
 `;
 
 export {
   MenuOption,
-  HomeMenuWrapper,
+  MenuWrapper,
 };
