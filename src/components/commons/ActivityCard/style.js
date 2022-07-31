@@ -40,6 +40,6 @@ export const Link = styled(Text)`
   
   &:hover {
     text-decoration: underline;
-    color: ${({ theme }) => theme.colors.yellow}
+    color: ${({ theme }) => theme.colors.yellow};
   }
 `;

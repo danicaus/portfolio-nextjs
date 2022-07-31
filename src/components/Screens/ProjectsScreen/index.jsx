@@ -11,7 +11,7 @@ export default function ProjectScreen({ pinnedRepos }) {
     <Section sectionName="projetos" id="portfolio">
       <ProjectsWrapper>
         {pinnedRepos.map((repo) => (
-          <ProjectCard repo={repo} />
+          <ProjectCard repo={repo} key={repo.url} />
         ))}
       </ProjectsWrapper>
     </Section>

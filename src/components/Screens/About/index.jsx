@@ -43,6 +43,7 @@ export default function AboutScreen({ content }) {
           </Text>
           {aboutContent?.map((text) => (
             <Text
+              key={text}
               variant="paragraph"
               color="gray300"
             >
