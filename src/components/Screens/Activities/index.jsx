@@ -1,7 +1,7 @@
 import React from 'react';
 import Section from '../../commons/Section';
 import ActivityCard from '../../commons/ActivityCard';
-import ActiviesWrapper from './style';
+import ActivitiesWrapper from './style';
 import activitiesJSON from '../../../data/Activities/activities.json';
 
 export default function Activities() {
@@ -9,11 +9,14 @@ export default function Activities() {
 
   return (
     <Section id="activities" sectionName="atividades">
-      <ActiviesWrapper>
+      <ActivitiesWrapper>
         {activities.map((activity) => (
-          <ActivityCard activity={activity} />
+          <ActivityCard
+            key={activity.title}
+            activity={activity}
+          />
         ))}
-      </ActiviesWrapper>
+      </ActivitiesWrapper>
     </Section>
   );
 }

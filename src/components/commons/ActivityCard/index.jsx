@@ -10,6 +10,7 @@ export default function ActivityCard({ activity }) {
       <Activity.Header>
         {activity.tags.map((tag) => (
           <Text
+            key={tag}
             variant="smallestException"
             color="yellow"
           >
@@ -29,6 +30,7 @@ export default function ActivityCard({ activity }) {
         {Boolean(activity.link) && (
           activity.link.map((link) => (
             <Activity.Link
+              key={link.url}
               href={link.url}
               variant="smallestException"
             >

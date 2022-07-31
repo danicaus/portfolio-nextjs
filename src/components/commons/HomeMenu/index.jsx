@@ -25,7 +25,7 @@ export default function HomeMenu() {
     <HomeMenuWrapper>
       {
         menuContent.map((content) => (
-          <Link passHref href={content.link}>
+          <Link passHref href={content.link} key={content.link}>
             <MenuOption
               ariaLabel={content.title}
               contentExhibited={content.title}
