@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import breakpointsMedia from '../../themes/utils/breakpointsMedia';
+import Text from '../Text';
 
-// eslint-disable-next-line import/prefer-default-export
-const Project = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -9,33 +10,56 @@ const Project = styled.div`
   border: 1px solid;
   border-color: ${({ theme }) => theme.colors.gray700};
   border-radius: 0.5rem;
-  padding: 2rem;
+  ${breakpointsMedia({
+    xs: css`
+      padding: 3rem 2rem;
+      `,
+    md: css`
+      padding: 3rem 4rem;
+    `,
+  })}
 `;
 
-const ProjectInfo = styled.div`
+const Header = styled.span`
   display: flex;
   align-items: center;
   justify-content: space-between;
+`;
 
-  small {
-    display: flex;
-    gap: 1.2rem;
-    align-items: center;
+const HeaderData = styled(Text)`
+  display: flex;
+  gap: 1.2rem;
+  align-items: baseline;
 
-    span {
-      display: flex;
-      gap: .3rem;
-      align-items: center;
-    }
-  }
-
-  a {
-    display: flex;
-    align-items: center;
+  svg:nth-child(2) {
+    margin-left: 1rem;
   }
 `;
 
-const ProjectButton = styled.a`
+const Main = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+
+  h3, & > div > p {
+    margin-bottom: 2rem;
+  }
+`;
+
+const TitleLogo = styled(Text)`
+  position: relative;
+  ${breakpointsMedia({
+    xs: css`
+      height: 3.5rem;
+      `,
+    md: css`
+      height: 4rem;
+    `,
+  })}
+`;
+
+const Button = styled.a`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.green};
   border-radius: .5rem;
@@ -61,27 +85,11 @@ const ProjectButton = styled.a`
   }
 `;
 
-const ProjectContent = styled.div`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: space-between;
-
-  h3, & > div > p {
-    margin-bottom: 1rem;
-  }
-`;
-
-ProjectContent.LogoContainer = styled.div`
-  height: 2rem;
-  width: 100%;
-  position: relative;
-  margin-bottom: 1rem;
-`;
-
-export {
-  Project,
-  ProjectInfo,
-  ProjectContent,
-  ProjectButton,
+export default {
+  Wrapper,
+  Header,
+  HeaderData,
+  Main,
+  TitleLogo,
+  Button,
 };

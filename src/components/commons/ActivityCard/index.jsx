@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Text from '../Text';
-import * as Activity from './style';
+import ActivityStyle from './style';
 
 export default function ActivityCard({ activity }) {
   return (
-    <Activity.Wrapper>
-      <Activity.Header>
+    <ActivityStyle.Wrapper>
+      <ActivityStyle.Header>
         {activity.tags.map((tag) => (
           <Text
             key={tag}
@@ -18,7 +18,7 @@ export default function ActivityCard({ activity }) {
             {tag}
           </Text>
         ))}
-      </Activity.Header>
+      </ActivityStyle.Header>
       <Text
         variant="subtitle"
         font="fira"
@@ -26,20 +26,20 @@ export default function ActivityCard({ activity }) {
         {activity.title}
       </Text>
       <Text>{activity.description}</Text>
-      <Activity.Links>
+      <ActivityStyle.Links>
         {Boolean(activity.link) && (
           activity.link.map((link) => (
-            <Activity.Link
+            <ActivityStyle.Link
               key={link.url}
               href={link.url}
               variant="smallestException"
             >
               {link.label}
-            </Activity.Link>
+            </ActivityStyle.Link>
           ))
         )}
-      </Activity.Links>
-    </Activity.Wrapper>
+      </ActivityStyle.Links>
+    </ActivityStyle.Wrapper>
   );
 }
 

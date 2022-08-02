@@ -5,12 +5,7 @@ import Image from 'next/image';
 
 import handleDateFormat from '../utils/getRelativeTime';
 
-import {
-  Project,
-  ProjectInfo,
-  ProjectContent,
-  ProjectButton,
-} from './style';
+import ProjectStyle from './style';
 import Text from '../Text';
 
 export default function ProjectCard({ repo }) {
@@ -27,7 +22,6 @@ export default function ProjectCard({ repo }) {
     $readmeElement.innerHTML = repo?.object?.text;
     const $titleElement = $readmeElement.querySelector('h1');
 
-    // Dentro do h1, temos uma img do md: ![](). Abaixo estou pegando só a referência do logo.
     const titleContent = $titleElement?.innerText;
     const hasImage = titleContent?.trim().startsWith('!');
     const logoRef = hasImage ? titleContent?.split('(')[1].replace(')', '') : '';
@@ -42,48 +36,44 @@ export default function ProjectCard({ repo }) {
   }, []);
 
   return (
-    <Project>
-      <ProjectInfo>
-        <small>
-          <Text
-            variant="smallestException"
-            color="gray300"
-            tag="span"
-          >
-            <BsClockHistory />
-            {handleDateFormat(repo.pushedAt)}
-          </Text>
-          <Text
-            variant="smallestException"
-            color="gray300"
-            tag="span"
-          >
-            <BsStar />
-            {repo.stargazerCount}
-          </Text>
-        </small>
-        <a href={repo.url}>
-          <Text
-            variant="smallestException"
-            color="gray300"
-            tag="span"
-          >
-            <BsGithub />
-          </Text>
-        </a>
-      </ProjectInfo>
-      <ProjectContent>
+    <ProjectStyle.Wrapper>
+      <ProjectStyle.Header>
+        <ProjectStyle.HeaderData
+          variant="smallestException"
+          color="gray300"
+          tag="span"
+        >
+          <BsClockHistory />
+          {handleDateFormat(repo.pushedAt)}
+
+          <BsStar />
+          {repo.stargazerCount}
+        </ProjectStyle.HeaderData>
+        <Text
+          variant="smallestException"
+          href={repo.url}
+          color="gray300"
+          tag="span"
+        >
+          <BsGithub />
+        </Text>
+      </ProjectStyle.Header>
+      <ProjectStyle.Main>
         <div>
           {hasLogo
             ? (
-              <ProjectContent.LogoContainer>
-                <Image src={`${repo.name}/main/${repoName}`} loader={nextLoader} alt={capitalizeFirstName(repo.name)} height={20} width={200} layout="fill" objectFit="contain" objectPosition="left" />
-              </ProjectContent.LogoContainer>
+              <ProjectStyle.TitleLogo
+                tag="h3"
+                variant="title"
+                color="pink"
+              >
+                <Image src={`${repo.name}/main/${repoName}`} loader={nextLoader} alt={capitalizeFirstName(repo.name)} layout="fill" objectFit="contain" objectPosition="left" />
+              </ProjectStyle.TitleLogo>
             ) : (
               <Text
                 tag="h3"
-                variant="subtitle"
-                color="green"
+                variant="title"
+                color="pink"
               >
                 {repoName}
               </Text>
@@ -96,7 +86,7 @@ export default function ProjectCard({ repo }) {
           </Text>
         </div>
         {repo.homepageUrl && (
-          <ProjectButton
+          <ProjectStyle.Button
             href={repo.homepageUrl}
             target="_blank"
           >
@@ -106,10 +96,10 @@ export default function ProjectCard({ repo }) {
             >
               Ver página
             </Text>
-          </ProjectButton>
+          </ProjectStyle.Button>
         )}
-      </ProjectContent>
-    </Project>
+      </ProjectStyle.Main>
+    </ProjectStyle.Wrapper>
   );
 }
 
@@ -120,9 +110,18 @@ ProjectCard.propTypes = {
     pushedAt: PropTypes.string.isRequired,
     stargazerCount: PropTypes.number.isRequired,
     url: PropTypes.string.isRequired,
-    homepageUrl: PropTypes.string.isRequired,
+    homepageUrl: PropTypes.string,
     object: PropTypes.shape({
-      text: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
+      text: PropTypes.string,
+    }),
+  }),
+};
+
+ProjectCard.defaultProps = {
+  repo: {
+    homepageUrl: '',
+    object: {
+      text: '',
+    },
+  },
 };

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Background = styled.div`
+const BackgroundStyle = styled.div`
   height: 100vh;
   width: 100%;
   background-image: ${({ theme }) => (`
@@ -12,4 +12,4 @@ const Background = styled.div`
   background-position: bottom right -15%;
 `;
 
-export default Background;
+export default BackgroundStyle;

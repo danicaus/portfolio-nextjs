@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import TextBase from './style';
+import TextStyle from './style';
 
 export default function Text({
   children,
@@ -15,7 +15,7 @@ export default function Text({
 }) {
   if (href) {
     return (
-      <TextBase
+      <TextStyle
         className={className}
         as="a"
         variant={variant}
@@ -26,12 +26,12 @@ export default function Text({
         rel="noreferrer"
       >
         {children}
-      </TextBase>
+      </TextStyle>
     );
   }
 
   return (
-    <TextBase
+    <TextStyle
       className={className}
       as={tag}
       variant={variant}
@@ -39,7 +39,7 @@ export default function Text({
       font={font}
     >
       {children}
-    </TextBase>
+    </TextStyle>
   );
 }
 

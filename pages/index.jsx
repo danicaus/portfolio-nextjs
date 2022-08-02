@@ -49,16 +49,28 @@ export async function getServerSideProps() {
 
 Home.propTypes = {
   pinnedRepos: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-    createdAt: PropTypes.string,
-    stargazerCount: PropTypes.number,
-    url: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    pushedAt: PropTypes.string.isRequired,
+    stargazerCount: PropTypes.number.isRequired,
+    url: PropTypes.string.isRequired,
     homepageUrl: PropTypes.string,
-  })).isRequired,
+    object: PropTypes.shape({
+      text: PropTypes.string,
+    }),
+  })),
   aboutText: PropTypes.shape({
     bio: PropTypes.string,
     avatarUrl: PropTypes.string,
     name: PropTypes.string,
     text: PropTypes.string,
   }).isRequired,
+};
+
+Home.defaultProps = {
+  pinnedRepos: {
+    homepageUrl: '',
+    object: {
+      text: '',
+    },
+  },
 };

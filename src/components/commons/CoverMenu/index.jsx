@@ -1,7 +1,7 @@
 import React from 'react';
-import { MenuOption, MenuWrapper } from './styles';
+import MenuStyle from './styles';
 
-export default function HomeMenu() {
+export default function CoverMenu() {
   const menuContent = [
     {
       title: 'Oi! 👋🏽',
@@ -24,17 +24,20 @@ export default function HomeMenu() {
   ];
 
   return (
-    <MenuWrapper>
+    <MenuStyle.Wrapper>
       {menuContent.map((menu) => (
-        <MenuOption
+        <MenuStyle.Option
+          key={menu.link}
           href={menu.link}
           blank="_self"
           color={menu.color}
           ariaLabel={menu.title}
           contentExhibited={menu.title}
           contentHover={menu.hoverTitle}
-        />
+        >
+          {' '}
+        </MenuStyle.Option>
       ))}
-    </MenuWrapper>
+    </MenuStyle.Wrapper>
   );
 }

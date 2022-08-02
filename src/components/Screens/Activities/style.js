@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-const ActivitiesWrapper = styled.ul`
+const ActivitiesStyle = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 4rem;
   list-style: none;
 `;
 
-export default ActivitiesWrapper;
+export default ActivitiesStyle;

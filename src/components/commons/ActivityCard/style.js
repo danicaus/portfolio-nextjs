@@ -2,28 +2,28 @@ import styled, { css } from 'styled-components';
 import breakpointsMedia from '../../themes/utils/breakpointsMedia';
 import Text from '../Text';
 
-export const Wrapper = styled.li`
+const Wrapper = styled.li`
   border: 1px solid;
   border-color: ${({ theme }) => theme.colors.pink};
   border-radius: 0.5rem;
-  padding: 2rem;
+  padding: 3rem;
 
   display: flex;
   flex-direction: column;
   gap: 1rem;
 `;
 
-export const Header = styled.div`
+const Header = styled.div`
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
   justify-content: flex-end;
   margin-bottom: -0.5rem;
 `;
 
-export const Links = styled.div`
+const Links = styled.div`
   display: flex;
   gap: 1.2rem;
-  margin-top: 1rem;
+  margin-top: 1.6rem;
   ${breakpointsMedia({
     xs: css`
       flex-direction: column;
@@ -34,7 +34,7 @@ export const Links = styled.div`
   })}
 `;
 
-export const Link = styled(Text)`
+const Link = styled(Text)`
   text-transform: uppercase;
   transition: 0.2s;
   
@@ -43,3 +43,10 @@ export const Link = styled(Text)`
     color: ${({ theme }) => theme.colors.yellow};
   }
 `;
+
+export default {
+  Wrapper,
+  Header,
+  Links,
+  Link,
+};
