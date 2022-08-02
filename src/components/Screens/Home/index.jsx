@@ -1,11 +1,11 @@
 import React from 'react';
-import HomeMenu from '../../commons/HomeMenu';
-import Background from './style';
+import CoverMenu from '../../commons/CoverMenu';
+import BackgroundStyle from './style';
 
 export default function HomeScreen() {
   return (
-    <Background>
-      <HomeMenu />
-    </Background>
+    <BackgroundStyle>
+      <CoverMenu />
+    </BackgroundStyle>
   );
 }

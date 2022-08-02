@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Section from '../../commons/Section';
 import Text from '../../commons/Text';
-import Profile from './style';
+
+import AboutStyle from './style';
 
 export default function AboutScreen({ content }) {
   const [aboutContent, setAboutContent] = useState([]);
@@ -17,41 +18,33 @@ export default function AboutScreen({ content }) {
     setAboutContent(paragraphsArray);
   }, []);
 
-  // faça um gradiente antes porque tá bem esquisito a transição entre seções!
-
   return (
     <Section sectionName="sobre mim" id="about">
-      <Profile.Wrapper>
-        <Profile.Avatar
-          src={content?.avatarUrl}
-          alt={`Foto de perfil do github ${content?.name}`}
-        />
-        <Profile.Bio>
+      <AboutStyle>
+        <Text
+          as="h2"
+          variant="title"
+          color="white"
+        >
+          {content?.name}
+        </Text>
+        <Text
+          as="h3"
+          variant="subtitle"
+          color="gray300"
+        >
+          {content?.bio}
+        </Text>
+        {aboutContent?.map((text) => (
           <Text
-            as="h2"
-            variant="title"
-            color="white"
-          >
-            {content?.name}
-          </Text>
-          <Text
-            as="h3"
-            variant="subtitle"
+            key={text}
+            variant="paragraph"
             color="gray300"
           >
-            {content?.bio}
+            {text}
           </Text>
-          {aboutContent?.map((text) => (
-            <Text
-              key={text}
-              variant="paragraph"
-              color="gray300"
-            >
-              {text}
-            </Text>
-          ))}
-        </Profile.Bio>
-      </Profile.Wrapper>
+        ))}
+      </AboutStyle>
     </Section>
   );
 }

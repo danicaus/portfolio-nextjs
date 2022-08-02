@@ -1,29 +1,43 @@
 import styled, { css } from 'styled-components';
 import breakpointsMedia from '../../themes/utils/breakpointsMedia';
+import Text from '../Text';
 
-const SectionWrapper = styled.section`
+const Wrapper = styled.section`
   ${breakpointsMedia({
     xs: css`
       padding: 1.5rem 2rem;
     `,
     md: css`
-      padding: 3rem;
+      padding: 3rem 18rem;
     `,
   })}
 `;
 
-const SectionContent = styled.div`
+const Content = styled.div`
   ${breakpointsMedia({
     xs: css`
-      padding: 1rem 0;
+      padding: 3rem 0 1rem;
     `,
     md: css`
-      padding: 3rem 10rem;
+      padding: 8rem 12rem;
     `,
   })}
 `;
 
-export {
-  SectionWrapper,
-  SectionContent,
+const Name = styled(Text)`
+  font-weight: 400;
+
+  &::before {
+    content: '${({ closeTag }) => (closeTag ? '</' : '<')}';
+  }
+
+  &::after {
+    content: '>';
+  }
+`;
+
+export default {
+  Wrapper,
+  Name,
+  Content,
 };

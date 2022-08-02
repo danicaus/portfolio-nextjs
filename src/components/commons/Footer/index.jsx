@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { FooterWrapper, FooterLink } from './style';
+import FooterStyle from './style';
 
 export default function Footer({ social }) {
   const [socialInfo, setSocialInfo] = useState([]);
@@ -28,18 +28,25 @@ export default function Footer({ social }) {
   }, []);
 
   return (
-    <FooterWrapper>
+    <FooterStyle.Wrapper>
+      <FooterStyle.Link
+        href="https://github.com/danicaus"
+        color="gray100"
+        hoverColor="#ffffffb3"
+      >
+        Github
+      </FooterStyle.Link>
       {socialInfo.map((info) => (
-        <FooterLink
+        <FooterStyle.Link
           key={info.name}
           href={info.link}
           color="gray100"
           hoverColor={info.color}
         >
           {info.name}
-        </FooterLink>
+        </FooterStyle.Link>
       ))}
-    </FooterWrapper>
+    </FooterStyle.Wrapper>
   );
 }
 

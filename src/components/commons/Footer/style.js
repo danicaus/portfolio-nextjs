@@ -2,15 +2,15 @@ import styled, { css } from 'styled-components';
 import breakpointsMedia from '../../themes/utils/breakpointsMedia';
 import Text from '../Text';
 
-// eslint-disable-next-line import/prefer-default-export
-export const FooterWrapper = styled.footer`
+const Wrapper = styled.footer`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
-  padding: 1rem 2vw;
+  padding: 3rem 2vw;
 `;
 
-export const FooterLink = styled(Text)`
+const Link = styled(Text)`
   ${breakpointsMedia({
     xs: css`
       color: ${({ hoverColor }) => hoverColor};
@@ -24,3 +24,8 @@ export const FooterLink = styled(Text)`
     `,
   })}
 `;
+
+export default {
+  Wrapper,
+  Link,
+};
