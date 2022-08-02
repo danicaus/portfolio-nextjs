@@ -47,10 +47,10 @@ ActivityCard.propTypes = {
   activity: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    link: PropTypes.arrayOf({
+    link: PropTypes.arrayOf(PropTypes.shape({
       url: PropTypes.string,
       label: PropTypes.string,
-    }),
+    })),
     tags: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };
