@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${({ theme }) => theme.colors.black};
     color: ${({ theme }) => theme.colors.gray100};
     font-family: ${({ theme }) => theme.fontFamily};
+    scroll-behavior: smooth;
   }
 
   a {

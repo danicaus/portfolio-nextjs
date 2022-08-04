@@ -11,9 +11,14 @@ const Wrapper = styled.footer`
 `;
 
 const Link = styled(Text)`
+  position: relative;
   ${breakpointsMedia({
     xs: css`
       color: ${({ hoverColor }) => hoverColor};
+
+      &::after {
+        content: '';
+      }
     `,
     md: css`
       color: inherit;
@@ -21,11 +26,28 @@ const Link = styled(Text)`
       &:hover {
         color: ${({ hoverColor }) => hoverColor};
       }
+
+      &::after {
+        content: '';
+      }
+
+      &:hover::after {
+        content: '${({ icon }) => (icon ? `\\${icon}` : '')}';
+        position: absolute;
+        font-family: "FontAwesome";
+        margin-left: 1rem;
+      }
     `,
   })}
+`;
+
+const LinkIcon = styled.span`
+  font-family: "FontAwesome";
+  font-size: 3rem;
 `;
 
 export default {
   Wrapper,
   Link,
+  LinkIcon,
 };

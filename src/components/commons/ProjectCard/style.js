@@ -41,6 +41,7 @@ const Main = styled.div`
   flex: 1;
   flex-direction: column;
   justify-content: space-between;
+  word-break: break-word; 
 
   h3, & > div > p {
     margin-bottom: 2rem;
