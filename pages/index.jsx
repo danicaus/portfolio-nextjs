@@ -22,7 +22,7 @@ export default function Home({ pinnedRepos, aboutText }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const { data } = await githubClient.query({
     query: GET_GITHUB_BIO_AND_PINNED_REPOS,
   });
@@ -44,6 +44,7 @@ export async function getServerSideProps() {
       pinnedRepos,
       aboutText,
     },
+    revalidate: 3600,
   };
 }
 

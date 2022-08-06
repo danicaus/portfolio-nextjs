@@ -22,7 +22,7 @@ Esse projeto foi desenvolvido usando as seguintes tecnologias:
 
 ## 👀 Para acessar o projeto
 
-Você pode usar este app no link: 
+Você pode usar este app no link: https://danicaus.dev
 
 ## 📢 Possíveis implementações futuras
 
@@ -35,6 +35,8 @@ Você pode usar este app no link:
 - Light/dark mode
 - Animações na capa
 - Animações no card de atividades
+- Testes na função de tempo do último commit
+- Github Actions
 
 ## 📄 Licença
 
