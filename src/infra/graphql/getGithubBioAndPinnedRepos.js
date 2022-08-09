@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 const GET_GITHUB_BIO_AND_PINNED_REPOS = gql`
-  query myPinnedRepos { 
+  query myBioAndPinnedRepos { 
     user(login:"danicaus") {
       bio
       avatarUrl
