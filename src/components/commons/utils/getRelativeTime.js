@@ -7,17 +7,20 @@ const DATEFORMATS = [
   [12, 'year'],
 ];
 
-export default function handleDateFormat(dateString, language = 'pt') {
-  const today = new Date();
-  const lastUpdatedAt = new Date(dateString);
-  const secondsBetweenDates = (lastUpdatedAt - today) / 1000;
+export default function getRelativeTime(dateIsoString, language = 'pt', today = new Date()) {
+  const lastUpdatedAt = new Date(dateIsoString);
+  const todayISO = new Date(today);
+  const secondsBetweenDates = (lastUpdatedAt - todayISO) / 1000;
+  let isThisUnit = true;
   let value = secondsBetweenDates;
   let unit = 'seconds';
 
   DATEFORMATS.forEach(([currentValue, currentUnit]) => {
-    if (Math.abs(value) > currentValue) {
+    if (Math.abs(value) > currentValue && isThisUnit) {
       unit = currentUnit;
       value /= currentValue;
+    } else {
+      isThisUnit = false;
     }
   });
 

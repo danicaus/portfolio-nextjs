@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { BsClockHistory, BsStar, BsGithub } from 'react-icons/bs';
 import Image from 'next/image';
 
-import handleDateFormat from '../utils/getRelativeTime';
+import getRelativeTime from '../utils/getRelativeTime';
 
 import ProjectStyle from './style';
 import Text from '../Text';
@@ -44,7 +44,7 @@ export default function ProjectCard({ repo }) {
           tag="span"
         >
           <BsClockHistory />
-          {handleDateFormat(repo.pushedAt)}
+          {getRelativeTime(repo.pushedAt)}
 
           <BsStar />
           {repo.stargazerCount}
